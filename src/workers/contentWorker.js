@@ -1,18 +1,13 @@
 const cheerio = require("cheerio");
 const axios = require("axios");
+const { AMAZONDP, dimentionsSelector, sizeSelector } = require("../constants");
 
-const AMAZONDP = "http://www.amazon.com/dp/";
-
-const dimentionsSelector =
-  "#prodDetails > div.wrapper.USlocale > div.column.col1 > div > div.content.pdClearfix > div > div > table > tbody > tr:nth-child(2) > td.value";
-
-const sizeSelector = "#SalesRank > td.value";
 /**
  * Getting product from fetching the product page
  * @param {String} asid asid of the amazon product
  */
 
-const getContent = async asid => {
+const getContent = async (asid) => {
   const $ = await fetchData(asid);
   console.log($(dimentionsSelector).html());
   console.log($(sizeSelector).html());
