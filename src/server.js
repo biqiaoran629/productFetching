@@ -5,7 +5,7 @@ const path = require("path");
 
 const app = express();
 
-const product = require("./routes/product");
+const product = require("./routes/productRoute");
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -1,17 +1,28 @@
 const cheerio = require("cheerio");
 const axios = require("axios");
-const { AMAZONDP, dimentionsSelector, sizeSelector } = require("../constants");
+const { AMAZONDP, SELECTORS: { DIMENTIONSELECTOR, SIZERANKSELECTOR } } = require("../constants");
+const Product = require("../objects/productObject");
 
 /**
  * Getting product from fetching the product page
  * @param {String} asid asid of the amazon product
  */
 
-const getContent = async (asid) => {
+const getContent = async asid => {
+  // Try to get from DB first
+
+  let currentProduct;
+
   const $ = await fetchData(asid);
-  console.log($(dimentionsSelector).html());
-  console.log($(sizeSelector).html());
-  return $;
+
+  const dimentionRawText = $(DIMENTIONSELECTOR).text();
+  const sizeRawText = $(SIZERANKSELECTOR).text();
+
+  if (Product.isValid(dimentionRawText, sizeRawText)) {
+    currentProduct = new Product(dimentionRawText, sizeRawText);
+  }
+
+  return currentProduct;
 };
 
 /**
