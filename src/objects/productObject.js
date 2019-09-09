@@ -1,4 +1,4 @@
-const Dimentions = require("./dimentionsObject");
+const Dimentions = require("./DimentionsObject");
 const { REGEX: { RANKCATEGORYREGEX, DIMENTIONSREGEX } } = require("../constants");
 const { removeCommas } = require("../utils");
 
@@ -19,18 +19,6 @@ class ProductObject {
     this.rank = parseInt(removeCommas(sizeRankMatch[1]));
     this.category = sizeRankMatch[2].trim();
   }
-
-  /**
-   * Checks if the raw product texts are valid
-   * @param {String} dimentionRawText Raw dimention text from cheerio
-   * @param {String} sizeRankRawText Raw dimention text from cheerio
-   * @returns {Boolean}
-   */
-
-  static isValid(dimentionRawText, sizeRankRawText) {
-    return Boolean(dimentionRawText.match(DIMENTIONSREGEX) && sizeRankRawText.match(RANKCATEGORYREGEX));
-  }
-
 }
 
 module.exports = ProductObject;
