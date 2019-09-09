@@ -1,24 +1,18 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 
 const app = express();
 
+const connectDB = require("./config/db");
 const product = require("./routes/productRoute");
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// DB Config
-// const db = require("./config/keys").mongoURI;
-
-// // Connect to MongoDB
-// mongoose
-//   .connect(db)
-//   .then(() => console.log("MongoDB Connected"))
-//   .catch(err => console.log(err));
+// Connect to MongoDB
+connectDB();
 
 // Use Routes
 app.use("/api/product", product);

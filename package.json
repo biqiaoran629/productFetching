@@ -1,7 +1,7 @@
 {
   "name": "productfetching",
   "version": "1.0.0",
-  "description": "fetching Amazon product by using ASID",
+  "description": "fetching Amazon product by using ASIN",
   "main": "src/server.js",
   "scripts": {
     "client": "npm start --prefix client",
