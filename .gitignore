@@ -62,3 +62,9 @@ typings/
 
 # vscode
 .vscode
+
+# client css
+src/client/src/App.css
+
+# client build
+src/client/build
