@@ -1,6 +1,6 @@
-const Dimentions = require("./DimentionsObject");
-const { REGEX: { RANKCATEGORYREGEX, DIMENTIONSREGEX } } = require("../constants");
-const { removeCommas } = require("../utils");
+const Dimentions = require('./DimentionsObject');
+const { REGEX: { RANKCATEGORYREGEX, DIMENTIONSREGEX } } = require('../constants');
+const { removeCommas } = require('../utils');
 
 class ProductObject {
 

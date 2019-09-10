@@ -1,5 +1,5 @@
-const express = require("express");
-const productEndpoint = require("../endpoints/productEndpoint");
+const express = require('express');
+const productEndpoint = require('../endpoints/productEndpoint');
 
 const router = express.Router();
 
@@ -9,8 +9,8 @@ const router = express.Router();
  * @access Public
  */
 
-router.get("/test", (req, res) => {
-  res.json({ msg: "Product works" });
+router.get('/test', (req, res) => {
+  res.json({ msg: 'Product works' });
 });
 
 /**
@@ -19,6 +19,6 @@ router.get("/test", (req, res) => {
  * @access Public
  */
 
-router.get("/:asin_id", productEndpoint.getProduct);
+router.get('/:asin_id', productEndpoint.getProduct);
 
 module.exports = router;

@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
-const mongoURI = require("./mongoURI");
+const mongoose = require('mongoose');
+const mongoURI = require('./mongoURI');
 
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoURI, { useNewUrlParser: true });
 
-    console.log("MongoDB connected...");
+    console.log('MongoDB connected...');
   }
   catch (err) {
     console.error(err.message);

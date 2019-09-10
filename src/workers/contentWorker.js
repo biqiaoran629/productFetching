@@ -1,7 +1,7 @@
-const { AMAZONDP, SELECTORS: { DIMENTIONSELECTOR, SIZERANKSELECTOR }, ERRORS: { FETCHING, PRODUCTINVALID } } = require("../constants");
-const { REGEX: { RANKCATEGORYREGEX, DIMENTIONSREGEX } } = require("../constants");
-const Product = require("../objects/productObject");
-const ProductModel = require("../models/ProductModel");
+const { AMAZONDP, SELECTORS: { DIMENTIONSELECTOR, SIZERANKSELECTOR }, ERRORS: { FETCHING, PRODUCTINVALID } } = require('../constants');
+const { REGEX: { RANKCATEGORYREGEX, DIMENTIONSREGEX } } = require('../constants');
+const Product = require('../objects/productObject');
+const ProductModel = require('../models/ProductModel');
 
 class ContentWorker {
 
@@ -27,7 +27,7 @@ class ContentWorker {
       if (currentProduct)
         return currentProduct;
 
-      console.log("not found from db");
+      console.log('not found from db');
 
       currentProduct = await this.getProductFromFetch(this.asin);
 
@@ -63,10 +63,10 @@ class ContentWorker {
    * @param {Obect} currentProduct currentProduct object
    */
   async saveToDB(currentProduct) {
-    console.log("saving to db...");
+    console.log('saving to db...');
     const product = new ProductModel(currentProduct);
     product.save();
-    console.log("saved to db!");
+    console.log('saved to db!');
   }
 
   /**

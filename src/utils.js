@@ -4,7 +4,7 @@
  * @param {String} stringValue String integer value
  * @returns {String}
  */
-const removeCommas = stringValue => stringValue.replace(/,/g, "");
+const removeCommas = stringValue => stringValue.replace(/,/g, '');
 
 module.exports = {
   removeCommas

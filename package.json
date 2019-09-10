@@ -4,11 +4,16 @@
   "description": "fetching Amazon product by using ASIN",
   "main": "src/server.js",
   "scripts": {
-    "client": "npm start --prefix src/client",
-    "client-install": "npm install --prefix src/client",
+    "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
     "debug": "node --nolazy --inspect-brk=9229 src/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "lint": "./node_modules/.bin/eslint ./src --config .eslintrc",
+    "lint-server": "./node_modules/.bin/eslint ./src --config .eslintrc",
+    "lint-server:fix": "./node_modules/.bin/eslint ./src ./client --config .eslintrc --fix",
+    "lint-client": "./node_modules/.bin/eslint ./client --config client/.eslintrc",
+    "lint-client:fix": "./node_modules/.bin/eslint ./client --config client/.eslintrc --fix",
+    "lint": "npm run lint-server && npm run lint-client",
+    "lint:fix": "npm run lint-server:fix && npm run lint-client:fix",
     "server": "node src/server.js",
     "server:dev": "nodemon src/server.js",
     "test": "jest --coverage"
@@ -35,9 +40,13 @@
   },
   "devDependencies": {
     "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-flowtype": "^4.3.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.8.0",
     "nodemon": "^1.19.2"

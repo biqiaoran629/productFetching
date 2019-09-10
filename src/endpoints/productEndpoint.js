@@ -1,8 +1,8 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+const axios = require('axios');
+const cheerio = require('cheerio');
 
-const ContentWorker = require("../workers/ContentWorker");
-const { ERRORS } = require("../constants");
+const ContentWorker = require('../workers/ContentWorker');
+const { ERRORS } = require('../constants');
 
 const getProduct = async (req, res) => {
   const {
@@ -11,7 +11,7 @@ const getProduct = async (req, res) => {
 
   // Issue bad request
   if (!asin_id) {
-    return res.status(400).json("No Amazon product ID is entered!");
+    return res.status(400).json('No Amazon product ID is entered!');
   }
 
   try {

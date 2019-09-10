@@ -1,13 +1,13 @@
-const ContentWorker = require("./ContentWorker");
-const mockAxios = require("../mocks/mockAxios");
-const mockCheerio = require("../mocks/mockCheerio");
+const ContentWorker = require('./ContentWorker');
+const mockAxios = require('../mocks/mockAxios');
+const mockCheerio = require('../mocks/mockCheerio');
 
 
-jest.mock("../objects/productObject");
+jest.mock('../objects/productObject');
 
 
-describe("content worker", () => {
-  let contentWorker = new ContentWorker("B07QZ949X5", mockAxios, mockCheerio);
+describe('content worker', () => {
+  let contentWorker = new ContentWorker('B07QZ949X5', mockAxios, mockCheerio);
 
 
   /*
@@ -23,23 +23,23 @@ describe("content worker", () => {
   it("should throw an error when getContent encountered something unexpected i.e. save failed");
   */
 
-  it("should check if the product is valid", () => {
+  it('should check if the product is valid', () => {
     expect(contentWorker.isValid(
-      "4.3 x 0.4 x 7.9 inches", "#30 in Baby (See Top 100 in Baby) #2 in Baby Health Care Products #2 in Baby Teether Toys")).toEqual(true);
+      '4.3 x 0.4 x 7.9 inches', '#30 in Baby (See Top 100 in Baby) #2 in Baby Health Care Products #2 in Baby Teether Toys')).toEqual(true);
   });
 
-  it("should still match with the product regardless of more spaces", () => {
+  it('should still match with the product regardless of more spaces', () => {
     expect(contentWorker.isValid(
-      "4.3 x   0.4   x   7.9   inches", "#30 in Baby        (See Top 100 in Baby) #2 in    Baby Health Care Products    #2 in Baby Teether Toys")).toEqual(true);
+      '4.3 x   0.4   x   7.9   inches', '#30 in Baby        (See Top 100 in Baby) #2 in    Baby Health Care Products    #2 in Baby Teether Toys')).toEqual(true);
   });
 
-  it("should return false if product string is invalid", () => {
+  it('should return false if product string is invalid', () => {
     expect(contentWorker.isValid(
-      "4.3 x 0.4 inches", "#30 in Baby (See Top 100 in Baby) #2 in Baby Health Care Products #2 in Baby Teether Toys")).toEqual(false);
+      '4.3 x 0.4 inches', '#30 in Baby (See Top 100 in Baby) #2 in Baby Health Care Products #2 in Baby Teether Toys')).toEqual(false);
   });
 
-  it("should return false if product string is invalid", () => {
+  it('should return false if product string is invalid', () => {
     expect(contentWorker.isValid(
-      "4.3 x 0.4 x 7.9 inches", "not a valid string")).toEqual(false);
+      '4.3 x 0.4 x 7.9 inches', 'not a valid string')).toEqual(false);
   });
 });

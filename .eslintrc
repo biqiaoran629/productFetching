@@ -10,10 +10,23 @@
     ],
     "quotes": [
       "error",
-      "double"
+      "single"
     ]
   },
-  "extends": "eslint:recommended",
+  "overrides": [
+    {
+      "files": [
+        "./client/*.js"
+      ],
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    }
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "env": {
     "browser": true,
     "es6": true,

@@ -64,7 +64,7 @@ typings/
 .vscode
 
 # client css
-src/client/src/App.css
+client/src/App.css
 
 # client build
-src/client/build
+client/build
