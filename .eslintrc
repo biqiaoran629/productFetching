@@ -13,16 +13,6 @@
       "single"
     ]
   },
-  "overrides": [
-    {
-      "files": [
-        "./client/*.js"
-      ],
-      "parserOptions": {
-        "sourceType": "module"
-      }
-    }
-  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended"
