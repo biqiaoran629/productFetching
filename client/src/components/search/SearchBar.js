@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { setValidationError } from '../../actions/validation';
+import { setValidationError, removeValidationError } from '../../actions/validation';
+import { getProduct, removeFetchError } from '../../actions/product';
 import PropTypes from 'prop-types';
-import Alert from '../error/Alert';
 
-const SearchBar = ({ setValidationError }) => {
+const SearchBar = ({ setValidationError, removeValidationError, getProduct, message, errorCode }) => {
   // Use formData here because we might have more fields than just asin in the future
   const [formData, setFromData] = useState({
     asin: ''
   });
-
-  // eslint-disable-next-line no-unused-vars
-  const [fetchProductData, setFetchProductData] = useState(null);
 
   const { asin } = formData;
 
@@ -23,16 +19,15 @@ const SearchBar = ({ setValidationError }) => {
   const onSubmit = async e => {
     e.preventDefault();
     // Silly validaion, but can be replaced with actual one.
-    if (asin.length < 10)
+    if (asin.length < 10) {
       setValidationError('Invalid ASIN detected - length less than 10');
-    else {
-      try {
-        const response = await axios.get(`/api/product/${asin}`);
-        setFetchProductData({ ...fetchProductData, fetchProductData: response.data });
-        console.log(`got response! + ${JSON.stringify(fetchProductData)}`);
-      } catch (err) {
-        console.error(err.response);
-      }
+    } else {
+      console.log(`do we have a msg? ${JSON.stringify(message)}`);
+      if (message)
+        removeValidationError();
+      if (errorCode)
+        removeFetchError();
+      getProduct(asin);
     }
   };
 
@@ -54,7 +49,17 @@ const SearchBar = ({ setValidationError }) => {
 };
 
 SearchBar.propTypes = {
-  setValidationError: PropTypes.func.isRequired
+  getProduct: PropTypes.func.isRequired,
+  setValidationError: PropTypes.func.isRequired,
+  removeValidationError: PropTypes.func.isRequired,
+  removeFetchError: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
+  errorCode: PropTypes.number.isRequired
 };
 
-export default connect(null, { setValidationError })(SearchBar);
+const mapStateToProps = state => ({
+  message: state.validation.message,
+  errorCode: state.product.error.code
+});
+
+export default connect(mapStateToProps, { getProduct, setValidationError, removeValidationError, removeFetchError })(SearchBar);

@@ -4,8 +4,8 @@ const path = require('path');
 
 const app = express();
 
-const connectDB = require('./config/db');
-const product = require('./routes/productRoute');
+const connectDB = require('./src/config/db');
+const product = require('./src/routes/productRoute');
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));

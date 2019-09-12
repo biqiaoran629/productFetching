@@ -6,7 +6,7 @@ const Alert = ({ message }) => message ? <p>{message}</p> : null;
 
 
 Alert.propTypes = {
-  validation: PropTypes.object.isRequired
+  message: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({

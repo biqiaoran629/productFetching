@@ -6,7 +6,7 @@
   "scripts": {
     "client": "npm start --prefix client",
     "client-install": "npm install --prefix client",
-    "debug": "node --nolazy --inspect-brk=9229 src/server.js",
+    "debug": "node --nolazy --inspect-brk=9229 server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint-server": "./node_modules/.bin/eslint ./src --config .eslintrc",
     "lint-server:fix": "./node_modules/.bin/eslint ./src ./client --config .eslintrc --fix",
@@ -14,8 +14,8 @@
     "lint-client:fix": "./node_modules/.bin/eslint ./client --config client/.eslintrc --fix",
     "lint": "npm run lint-server && npm run lint-client",
     "lint:fix": "npm run lint-server:fix && npm run lint-client:fix",
-    "server": "node src/server.js",
-    "server:dev": "nodemon src/server.js",
+    "server": "node server.js",
+    "server:dev": "nodemon server.js",
     "test": "jest --coverage"
   },
   "repository": {

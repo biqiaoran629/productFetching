@@ -1,6 +1,9 @@
 import { SET_VALIDATION_ERROR, REMOVE_VALIDATION_ERROR } from '../actions/types';
 
-const initialState = { message: '' };
+const initialState =
+{
+  message: ''
+};
 
 export default function (state = initialState, action) {
 
@@ -11,7 +14,7 @@ export default function (state = initialState, action) {
     case SET_VALIDATION_ERROR:
       return { ...state, message: payload.message };
     case REMOVE_VALIDATION_ERROR:
-      return { ...state, message: payload.message };
+      return { ...state, message: '' };
     default:
       return state;
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './components/search/SearchBar';
-import Product from './components/product/Product';
-import Alert from './components/error/Alert';
+import SearchBarLayout from './layout/SearchBarLayout';
+import ProductLayout from './layout/ProductLayout';
+
 
 //redux
 import { Provider } from 'react-redux';
@@ -12,9 +12,8 @@ const App = () => (
   <Provider store={store}>
     <div className="App">
       <h1>App</h1>
-      <SearchBar />
-      <Alert />
-      <Product />
+      <SearchBarLayout />
+      <ProductLayout />
     </div>
   </Provider>
 );

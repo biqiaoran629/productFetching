@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Product = () => {
-  const [fetchProductData] = useState(null);
+const Product = ({ asin, dimentions, rank, category }) => <h1>`${asin} ${dimentions} ${rank} ${category}`</h1>;
 
-  console.log(`fetch product data: ${fetchProductData}`);
-
-  return <h1>{fetchProductData}</h1>;
+Product.propTypes = {
+  asin: PropTypes.string.isRequired,
+  dimentions: PropTypes.string.isRequired,
+  rank: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired
 };
 
-export default Product;
+const mapStateToProps = state => ({
+  asin: state.product.asin,
+  dimentions: state.product.dimentions,
+  rank: state.product.rank,
+  category: state.product.category
+});
+export default connect(mapStateToProps)(Product);

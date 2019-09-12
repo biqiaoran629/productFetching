@@ -1,2 +1,9 @@
+// Validation
 export const SET_VALIDATION_ERROR = 'SET_VALIDATION_ERROR';
 export const REMOVE_VALIDATION_ERROR = 'REMOVE_VALIDATION_ERROR';
+
+// Fetch Product
+export const FETCH_PRODUCT = 'FETCH_PRODUCT';
+export const SET_FETCH_ERROR = 'SET_FETCH_ERROR';
+export const REMOVE_FETCH_ERROR = 'REMOVE_FETCH_ERROR';
+
