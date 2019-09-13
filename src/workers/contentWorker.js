@@ -47,7 +47,7 @@ class ContentWorker {
     const dimentionRawText = $(DIMENTIONSELECTOR).text();
     const sizeRawText = $(SIZERANKSELECTOR).text();
 
-    if (this.isValid(dimentionRawText, sizeRawText)) {
+    if (!this.isValid(dimentionRawText, sizeRawText)) {
       throw new Error(PRODUCTINVALID);
     }
 
@@ -83,7 +83,7 @@ class ContentWorker {
   }
 
   /**
- * Checks if the raw product texts are valid
+ * Returns true if the given raw texts are valid. Otherwise returns false.
  * @param {String} dimentionRawText Raw dimention text from cheerio
  * @param {String} sizeRankRawText Raw dimention text from cheerio
  * @returns {Boolean}

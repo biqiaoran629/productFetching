@@ -1,0 +1,92 @@
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &__header {
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
+    margin-bottom: 5rem;
+  }
+}
+
+/******************************** Error **************************************/
+.error {
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    display: block;
+    margin: 3rem auto;
+  }
+
+  &__img {
+    height: 20rem;
+  }
+}
+
+
+/******************************** Search **************************************/
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+
+  &__input {
+    box-sizing: content-box;
+    color: inherit;
+    font-family: inherit;
+    font-size: 2rem;
+    background-color: $color-gray-light-1;
+    border-radius: 100px;
+    border: none;
+    padding: 0.7rem 2rem;
+    width: 100%;
+    height: 5rem;
+    transition: all 0.2s;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $color-gray-dark-2;
+      width: 102%;
+      background-color: $color-gray-light-1;
+    }
+
+    &::-webkit-input-placeholder {
+      font-weight: 100;
+      color: $color-gray-light-2;
+    }
+  }
+
+  &__input:focus {
+    background-color: $color-gray-light-2;
+  }
+}
+
+/******************************** Spinner **************************************/
+.spinner {
+  width: '200px';
+  margin: 10rem auto;
+  display: 'block';
+}
+
+/******************************** Spinner **************************************/
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  margin: 3rem auto;
+
+  &__value {
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+}
+

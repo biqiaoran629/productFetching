@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setValidationError, removeValidationError } from '../../actions/validation';
-import { getProduct, removeFetchError } from '../../actions/product';
+import { getProduct } from '../../actions/product';
 import PropTypes from 'prop-types';
 
-const SearchBar = ({ setValidationError, removeValidationError, getProduct, message, errorCode }) => {
+const SearchBar = ({ setValidationError, removeValidationError, getProduct, message }) => {
   // Use formData here because we might have more fields than just asin in the future
   const [formData, setFromData] = useState({
     asin: ''
@@ -22,11 +22,8 @@ const SearchBar = ({ setValidationError, removeValidationError, getProduct, mess
     if (asin.length < 10) {
       setValidationError('Invalid ASIN detected - length less than 10');
     } else {
-      console.log(`do we have a msg? ${JSON.stringify(message)}`);
       if (message)
         removeValidationError();
-      if (errorCode)
-        removeFetchError();
       getProduct(asin);
     }
   };
@@ -42,8 +39,6 @@ const SearchBar = ({ setValidationError, removeValidationError, getProduct, mess
         onChange={e => onChange(e)}
         required
       />
-      <button className="search__button">
-      </button>
     </form>
   </>;
 };
@@ -52,9 +47,7 @@ SearchBar.propTypes = {
   getProduct: PropTypes.func.isRequired,
   setValidationError: PropTypes.func.isRequired,
   removeValidationError: PropTypes.func.isRequired,
-  removeFetchError: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
-  errorCode: PropTypes.number.isRequired
+  message: PropTypes.string.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -62,4 +55,4 @@ const mapStateToProps = state => ({
   errorCode: state.product.error.code
 });
 
-export default connect(mapStateToProps, { getProduct, setValidationError, removeValidationError, removeFetchError })(SearchBar);
+export default connect(mapStateToProps, { getProduct, setValidationError, removeValidationError })(SearchBar);
