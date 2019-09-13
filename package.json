@@ -17,7 +17,8 @@
     "lint:fix": "npm run lint-server:fix && npm run lint-client:fix",
     "server": "node server.js",
     "server:dev": "nodemon server.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "heroku-postbuild": "npm install --prefix client && npm run compile:sass && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
